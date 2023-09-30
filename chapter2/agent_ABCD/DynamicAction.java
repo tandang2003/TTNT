@@ -1,4 +1,4 @@
-package chapter2.agent_AB;
+package chapter2.agent_ABCD;
 
 public class DynamicAction extends Action {
 	private String name;

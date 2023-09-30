@@ -1,17 +1,19 @@
-package chapter2.agent_AB; 
+package chapter2.agent_ABCD;
+
+import chapter2.agent_ABCD.Environment.LocationState;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import chapter2.agent_AB.Environment.LocationState;
-
 public class EnvironmentState {
-	private Map<String, Environment.LocationState> state = new HashMap<String, Environment.LocationState>();
+	private Map<String, LocationState> state = new HashMap<String, LocationState>();
 	private String agentLocation = null;//
 
-	public EnvironmentState(Environment.LocationState locAState, Environment.LocationState locBState) {
+	public EnvironmentState(LocationState locAState, LocationState locBState, LocationState locCState, LocationState locDState) {
 		this.state.put(Environment.LOCATION_A, locAState);
 		this.state.put(Environment.LOCATION_B, locBState);
+		this.state.put(Environment.LOCATION_C, locCState);
+		this.state.put(Environment.LOCATION_D, locDState);
 	}
 
 	public void setAgentLocation(String location) {
