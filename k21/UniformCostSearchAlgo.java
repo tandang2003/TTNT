@@ -2,7 +2,7 @@ package k21;
 
 import java.util.*;
 
-public class TreeUniformCostSearchAlgo implements ISearchAlgo {
+public class UniformCostSearchAlgo implements ISearchAlgo {
     @Override
     public Node execute(Node root, String goal) {
         PriorityQueue<Node> frontier = new PriorityQueue<>(new Comparator<Node>() {
