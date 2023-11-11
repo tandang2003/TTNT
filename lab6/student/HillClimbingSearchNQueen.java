@@ -1,14 +1,12 @@
 package student;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
-
-public class HillClimbingSearch {
+public class HillClimbingSearchNQueen {
     private Node node;
+    int stepClimbed = 0;
+    int stepClimbedAfterRandomRestart = 0;
+    int randomRestarts = 0;
 
-    public HillClimbingSearch() {
+    public HillClimbingSearchNQueen() {
         this.node = new Node();
         this.node.generateBoard();
     }
@@ -22,19 +20,35 @@ public class HillClimbingSearch {
         Node curr = initialState;
         Node neighbor = null;
         while (true) {
-            if(curr.getH()==0) return curr;
             neighbor = curr.getBestGenerate();
-            if (neighbor.getH() < curr.getH()) curr = neighbor ;
-            else curr.generateBoard();
+            if (neighbor.getH() < curr.getH()) curr = neighbor;
+            else return curr;
         }
 
 
     }
 
-    public Node executeHillClimbingWithRandomRestart(Node
-                                                             initialState) {
-// Enter your code here.
-        return null;
+    public Node executeHillClimbingWithRandomRestart(Node initialState) {
+        Node curr = initialState;
+        Node neighbor = null;
+        while (true) {
+            if (curr.getH() == 0) {
+                System.out.println(stepClimbed);
+                System.out.println(randomRestarts);
+                System.out.println(stepClimbedAfterRandomRestart);
+                return curr;
+            }
+            neighbor = curr.getBestGenerate();
+            if (neighbor.getH() < curr.getH()) {
+                curr = new Node(neighbor);
+                stepClimbed++;
+                stepClimbedAfterRandomRestart++;
+            } else {
+                curr.generateBoard();
+                stepClimbedAfterRandomRestart = 0;
+                randomRestarts++;
+            }
+        }
     }
 
 
